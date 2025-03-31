@@ -24,6 +24,16 @@
         <TextBox Grid.Row="2"
                  Text="{Binding NewItemContent}"
                  Watermark="Add a new Item">
+            <TextBox.InnerRightContent>
+                <Button Command="{Binding AddItemCommand}">
+                    Add
+                    <!-- <PathIcon Data="{DynamicResource AcceptIconData}" Foreground="Green" /> -->
+                </Button>
+            </TextBox.InnerRightContent>
+            <!-- Keybindings allow us to define keyboard gestures -->
+            <TextBox.KeyBindings>
+                <KeyBinding Command="{Binding AddItemCommand}" Gesture="Enter" />
+            </TextBox.KeyBindings>
         </TextBox>
     </Grid>
 
