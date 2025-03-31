@@ -18,6 +18,23 @@
             <!-- This ItemsControl show all added ToDoItems. -->
             <!-- It needs to be placed inside a ScrollViewer because other than a ListBox it has not its own -->
             <ItemsControl ItemsSource="{Binding ToDoItems}">
+                <ItemsControl.ItemTemplate>
+                    <!-- The ItemTemplate defines how each item should be represented -->
+                    <!-- Our item will be represented by a Checkbox and a Delete-Button -->
+                    <DataTemplate DataType="vm:ToDoItemViewModel">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <CheckBox Content="{Binding Content}"
+                                      IsChecked="{Binding IsChecked}" />
+
+                            <!-- Note how we use the Root-Grid to ge the MainViewModel here. As we use compiled bindings we have to cast the DataContext -->
+                            <Button Command="{Binding #Root.((vm:MainWindowViewModel)DataContext).RemoveItemCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Grid.Column="1">
+                                Delete
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
         <!-- This TextBox can be used to add new ToDoItems -->
