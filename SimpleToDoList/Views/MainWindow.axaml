@@ -12,7 +12,7 @@
 
     <Grid RowDefinitions="Auto, *, Auto"
           x:Name="Root">
-        <TextBlock Text="My ToDo-List" />
+        <TextBlock Classes="h1" Text="My ToDo-List" />
 
         <ScrollViewer Grid.Row="1">
             <!-- This ItemsControl show all added ToDoItems. -->
