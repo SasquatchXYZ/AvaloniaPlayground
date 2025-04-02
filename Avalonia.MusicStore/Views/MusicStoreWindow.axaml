@@ -8,7 +8,8 @@
         TransparencyLevelHint="AcrylicBlur"
         ExtendClientAreaToDecorationsHint="True"
         Width="1000" Height="550"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        xmlns:views="using:Avalonia.MusicStore.Views">
     <Panel>
         <ExperimentalAcrylicBorder IsHitTestVisible="False">
             <ExperimentalAcrylicBorder.Material>
@@ -21,7 +22,7 @@
         </ExperimentalAcrylicBorder>
 
         <Panel Margin="40">
-
+            <views:MusicStoreView />
         </Panel>
     </Panel>
 </Window>
