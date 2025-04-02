@@ -5,6 +5,13 @@ namespace Avalonia.MusicStore.ViewModels;
 
 public class MusicStoreViewModel : ViewModelBase
 {
+    public MusicStoreViewModel()
+    {
+        SearchResults.Add(new AlbumViewModel());
+        SearchResults.Add(new AlbumViewModel());
+        SearchResults.Add(new AlbumViewModel());
+    }
+
     private string? _searchText;
     private bool _isBusy;
 
