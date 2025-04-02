@@ -12,7 +12,8 @@
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
 
-        ExtendClientAreaToDecorationsHint="True">
+        ExtendClientAreaToDecorationsHint="True"
+        WindowStartupLocation="CenterScreen">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
