@@ -1,6 +1,17 @@
-﻿namespace Avalonia.MusicStore.ViewModels;
+﻿using System.Windows.Input;
+using ReactiveUI;
+
+namespace Avalonia.MusicStore.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    public ICommand BuyMusicCommand { get; }
+
+    public MainWindowViewModel()
+    {
+        BuyMusicCommand = ReactiveCommand.Create(() =>
+        {
+            // Code here will be executed when the button is clicked.
+        });
+    }
 }
