@@ -1,6 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
 using Avalonia.MusicStore.Models;
 using ReactiveUI;
 
@@ -58,5 +60,21 @@ public class MusicStoreViewModel : ViewModelBase
         }
 
         IsBusy = false;
+    }
+
+    private async void LoadCovers(CancellationToken cancellationToken)
+    {
+        // Here we iterate through a COPY of the search results collection (created by the `ToList` method)
+        // This is because it runs asynchronously on its own thread, and the original results collection
+        // could get changed at any time by another thread.
+        foreach (var album in SearchResults.ToList())
+        {
+            await album.LoadCover();
+
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+        }
     }
 }
