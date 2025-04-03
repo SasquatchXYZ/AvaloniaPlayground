@@ -20,6 +20,7 @@ public class MusicStoreViewModel : ViewModelBase
 
     private string? _searchText;
     private bool _isBusy;
+    private CancellationTokenSource? _cancellationTokenSource;
 
     public string? SearchText
     {
@@ -48,6 +49,10 @@ public class MusicStoreViewModel : ViewModelBase
         IsBusy = true;
         SearchResults.Clear();
 
+        _cancellationTokenSource?.Cancel();
+        _cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = _cancellationTokenSource.Token;
+
         if (!string.IsNullOrWhiteSpace(s))
         {
             var albums = await Album.SearchAsync(s);
@@ -56,6 +61,11 @@ public class MusicStoreViewModel : ViewModelBase
             {
                 var vm = new AlbumViewModel(album);
                 SearchResults.Add(vm);
+            }
+
+            if (!cancellationToken.IsCancellationRequested)
+            {
+                LoadCovers(cancellationToken);
             }
         }
 
