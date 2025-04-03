@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Avalonia.MusicStore.Views.AlbumView"
-             Width="200">
+             Width="200"
+             xmlns:vm="using:Avalonia.MusicStore.ViewModels"
+             x:DataType="vm:AlbumViewModel">
 
     <StackPanel Spacing="5" Width="200">
         <Border CornerRadius="10" ClipToBounds="True">
@@ -15,6 +17,8 @@
                 </Panel>
             </Panel>
         </Border>
+        <TextBlock HorizontalAlignment="Center" Text="{Binding Title}" />
+        <TextBlock HorizontalAlignment="Center" Text="{Binding Artist}" />
     </StackPanel>
 
 </UserControl>
