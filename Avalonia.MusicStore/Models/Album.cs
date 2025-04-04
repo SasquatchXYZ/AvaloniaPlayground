@@ -69,4 +69,29 @@ public class Album
     {
         await JsonSerializer.SerializeAsync(stream, data).ConfigureAwait(false);
     }
+
+    public static async Task<Album> LoadFromStream(Stream stream)
+    {
+        return (await JsonSerializer.DeserializeAsync<Album>(stream).ConfigureAwait(false))!;
+    }
+
+    public static async Task<IEnumerable<Album>> LoadCachedAsync()
+    {
+        if (!Directory.Exists("./Cache"))
+        {
+            Directory.CreateDirectory("./Cache");
+        }
+
+        var results = new List<Album>();
+
+        foreach (var file in Directory.EnumerateFiles("./Cache"))
+        {
+            if (!string.IsNullOrWhiteSpace(new DirectoryInfo(file).Extension)) continue;
+
+            await using var fs = File.OpenRead(file);
+            results.Add(await Album.LoadFromStream(fs).ConfigureAwait(false));
+        }
+
+        return results;
+    }
 }
