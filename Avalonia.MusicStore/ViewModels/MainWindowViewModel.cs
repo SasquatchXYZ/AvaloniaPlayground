@@ -18,6 +18,7 @@ public class MainWindowViewModel : ViewModelBase
             if (result is not null)
             {
                 Albums.Add(result);
+                await result.SaveToDiskAsync();
             }
         });
     }
