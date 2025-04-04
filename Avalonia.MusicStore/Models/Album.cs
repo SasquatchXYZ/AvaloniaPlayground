@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using iTunesSearch.Library;
 
@@ -44,5 +45,28 @@ public class Album
             var data = await s_httpClient.GetByteArrayAsync(CoverUrl);
             return new MemoryStream(data);
         }
+    }
+
+    public async Task SaveAsync()
+    {
+        if (!Directory.Exists("./Cache"))
+        {
+            Directory.CreateDirectory("./Cache");
+        }
+
+        using (var fs = File.OpenWrite(CachePath))
+        {
+            await SaveToStreamAsync(this, fs);
+        }
+    }
+
+    public Stream SaveCoverBitmapStream()
+    {
+        return File.OpenWrite(CachePath + ".bmp");
+    }
+
+    private static async Task SaveToStreamAsync(Album data, Stream stream)
+    {
+        await JsonSerializer.SerializeAsync(stream, data).ConfigureAwait(false);
     }
 }
