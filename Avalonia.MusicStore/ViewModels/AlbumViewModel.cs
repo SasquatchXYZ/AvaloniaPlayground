@@ -33,4 +33,22 @@ public class AlbumViewModel : ViewModelBase
             Cover = await Task.Run(() => Bitmap.DecodeToWidth(imageStream, 400));
         }
     }
+
+    public async Task SaveToDiskAsync()
+    {
+        await _album.SaveAsync();
+
+        if (Cover is not null)
+        {
+            var bitmap = Cover;
+
+            await Task.Run(() =>
+            {
+                using (var fs = _album.SaveCoverBitmapStream())
+                {
+                    bitmap.Save(fs);
+                }
+            });
+        }
+    }
 }
