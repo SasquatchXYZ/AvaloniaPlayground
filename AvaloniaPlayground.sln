@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleToDoList", "SimpleToDoList\SimpleToDoList.csproj", "{B03BDE40-03CE-4A90-99FE-A66D63C4443F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.MusicStore", "Avalonia.MusicStore\Avalonia.MusicStore.csproj", "{97FDC5DD-5BE5-4338-AAEB-D8DB2DE7C432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{B03BDE40-03CE-4A90-99FE-A66D63C4443F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B03BDE40-03CE-4A90-99FE-A66D63C4443F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B03BDE40-03CE-4A90-99FE-A66D63C4443F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97FDC5DD-5BE5-4338-AAEB-D8DB2DE7C432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97FDC5DD-5BE5-4338-AAEB-D8DB2DE7C432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97FDC5DD-5BE5-4338-AAEB-D8DB2DE7C432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97FDC5DD-5BE5-4338-AAEB-D8DB2DE7C432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
